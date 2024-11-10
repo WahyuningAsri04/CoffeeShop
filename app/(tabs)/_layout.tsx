@@ -1,35 +1,28 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import { Ionicons } from '@expo/vector-icons';  // Import Ionicons
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+          title: 'Menu',
+          tabBarIcon: () => <Ionicons name="menu" size={24} color="black" />,  // Menggunakan nama icon yang valid
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="Detail"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
+          title: 'Product Detail',
+          tabBarIcon: () => <Ionicons name="information-circle" size={24} color="black" />,  // Icon yang valid
+        }}
+      />
+      <Tabs.Screen
+        name="Cart"
+        options={{
+          title: 'Cart',
+          tabBarIcon: () => <Ionicons name="cart" size={24} color="black" />,  // Icon untuk Cart
         }}
       />
     </Tabs>
